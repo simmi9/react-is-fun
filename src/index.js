@@ -4,11 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const style = { 
+	backgroundColor: 'gray',
+	color: 'orange',
+	align: 'center'
+};
+
 const title = React.createElement('h1',
- 								{id:'title', 
- 								className:'header'}, 
+ 								{id: 'title', 
+ 								className: 'header',
+ 								style: style},   
  								'Hello World'
-								)  
+								);  
 
 ReactDOM.render(title, document.getElementById('root'));      
 //ReactDOM.render(<App />, document.getElementById('root'));
