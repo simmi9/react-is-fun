@@ -10,14 +10,18 @@ const style = {
 	align: 'center'
 };
 
-const title = React.createElement('h1',
+/*const title = React.createElement('h1',
  								{id: 'title', 
  								className: 'header',
  								style: style},   
  								'Hello World'
-								);  
+								);  */
 
-ReactDOM.render(title, document.getElementById('root'));      
+//Simplifying this to using JSX
+
+ReactDOM.render(<div style={style}>
+					<h1> Hello World </h1>  
+				</div>, document.getElementById('root'));      
 //ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
