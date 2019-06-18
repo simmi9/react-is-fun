@@ -4,7 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const title = React.createElement('h1',
+ 								{id:'title', 
+ 								className:'header'}, 
+ 								'Hello World'
+								)  
+
+ReactDOM.render(title, document.getElementById('root'));      
+//ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
