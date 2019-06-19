@@ -130,20 +130,49 @@ const styleBook={
   		)
   }
 
-const Library = () =>{
+
+// Commenting Component Function
+/*const Library = ({bookList}) =>{
 		return (
 			<section>
 		{
-			BookData.map((value, index) => {
-        			return <Book style={styleBook} key={index} title={value.title} author={value.author} price={value.price}/> 
+			bookList.map((book, Index) => {
+        			return <Book style={styleBook} key={Index} title={book.title} author={book.author} price={book.price}/> 
         		})
 		}
 			</section>
 		)
 }
+*/
+
+//Adding state 
+class Library extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			open: false
+		}
+	}
+	render() {
+		const { bookList } = this.props
+		return (
+			<div>
+				<h1>The library is {this.state.open ? 'open' : 'closed'}</h1>
+				{bookList.map(
+					(book, i) => 
+						<Book 
+							key={i}
+							title={book.title} 
+							author={book.author} 
+							pages={book.pages}/>
+				)}
+			</div>
+		)
+	}
+}
 
 render(<div style={styleLibrary}>
-<Library />
+<Library bookList={BookData}/>
 </div>,
 document.getElementById('root'));
 
