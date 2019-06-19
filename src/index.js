@@ -111,7 +111,7 @@ const BookData = [{
 const styleLibrary={
 	display:'flex',
 	flexDirection:'column',
-	backgroundColor: 'gray'
+	backgroundColor: 'white'
 }
 const styleBook={
 	display:'flex',
@@ -152,12 +152,23 @@ class Library extends React.Component {
 		this.state = {
 			open: false
 		}
+		this.toggleOpenClosed = this.toggleOpenClosed.bind(this)
 	}
+
+	toggleOpenClosed(){
+		//using CallBacks for setState as setState is asynchronous
+		this.setState(prevState => ({
+			open: !prevState.open
+		}))
+	}
+
 	render() {
 		const { bookList } = this.props
 		return (
 			<div>
 				<h1>The library is {this.state.open ? 'open' : 'closed'}</h1>
+				<button onClick={this.toggleOpenClosed}>Change</button>
+			
 				{bookList.map(
 					(book, i) => 
 						<Book 
@@ -166,6 +177,7 @@ class Library extends React.Component {
 							author={book.author} 
 							pages={book.pages}/>
 				)}
+
 			</div>
 		)
 	}
