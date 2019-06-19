@@ -90,7 +90,7 @@ document.getElementById('root')
 */
 
 //Parent and Child Components
-
+/*
 const BookData = [{
 	title:"Harry Potter and the Prisoner of askaban",
 	author:"JK Rowling",
@@ -133,18 +133,18 @@ const styleBook={
 
 
 // Commenting Component Function
-/*const Library = ({bookList}) =>{
-		return (
-			<section>
-		{
-			bookList.map((book, Index) => {
-        			return <Book style={styleBook} key={Index} title={book.title} author={book.author} price={book.price}/> 
-        		})
-		}
-			</section>
-		)
-}
-*/
+//const Library = ({bookList}) =>{
+//		return (
+//			<section>
+//		{
+//			bookList.map((book, Index) => {
+//        			return <Book style={styleBook} key={Index} title={book.title} author={book.author} price={book.price}/> 
+ //       		})
+//		}
+//			</section>
+//		)
+//}
+
 //conditional Rendering Components
 
 const Hiring = () => <div>
@@ -157,20 +157,20 @@ const NotHiring = () => <div>
 
 //Adding state 
 class Library extends React.Component {
-	/*constructor(props) {
-		super(props)
-		this.state = {
-			open: false
-		}
-		this.toggleOpenClosed = this.toggleOpenClosed.bind(this)
-	}
+	//constructor(props) {
+	//	super(props)
+	//	this.state = {
+//			open: false
+//		}
+//		this.toggleOpenClosed = this.toggleOpenClosed.bind(this)
+//	}
 
-	toggleOpenClosed(){
+//	toggleOpenClosed(){
 		//using CallBacks for setState as setState is asynchronous
-		this.setState(prevState => ({
-			open: !prevState.open
-		}))
-	}*/
+//		this.setState(prevState => ({
+//			open: !prevState.open
+//		}))
+//	}
 
 	state = {open:false, 
 		freeBookMark: false,
@@ -236,6 +236,42 @@ componentDidUpdate() {
 
 render(<div style={styleLibrary}>
 <Library bookList={BookData}/>
+</div>,
+document.getElementById('root'));
+*/
+
+//Form Handling in React
+
+class ColorPickerForm extends React.Component {
+	state={ value:'' }
+
+    pickColor = (e) =>{
+    	this.setState({value: e.target.value})
+    }
+
+    submit = (e) =>{
+    	console.log(`color changed ${this.state.value}`);
+    	e.preventDefault();
+
+    }
+
+    render(){
+    	return(
+    		<form onSubmit={this.submit}>
+    			<label> Pick a Color:
+    				<input type="color" 
+    					   onChange={this.pickColor}>
+    				</input>
+    			 </label>
+    			 <button>submit</button>
+    		</form>
+
+    		)
+    }
+}
+
+render(<div>
+<ColorPickerForm/>
 </div>,
 document.getElementById('root'));
 
