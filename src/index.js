@@ -147,7 +147,7 @@ const styleBook={
 
 //Adding state 
 class Library extends React.Component {
-	constructor(props) {
+	/*constructor(props) {
 		super(props)
 		this.state = {
 			open: false
@@ -156,6 +156,15 @@ class Library extends React.Component {
 	}
 
 	toggleOpenClosed(){
+		//using CallBacks for setState as setState is asynchronous
+		this.setState(prevState => ({
+			open: !prevState.open
+		}))
+	}*/
+
+	state = {open:false}
+//automatic bind to object of this class using arrow functions  
+	toggleOpenClosed = () => {
 		//using CallBacks for setState as setState is asynchronous
 		this.setState(prevState => ({
 			open: !prevState.open
