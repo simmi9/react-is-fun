@@ -174,7 +174,21 @@ class Library extends React.Component {
 
 	state = {open:false, 
 		freeBookMark: false,
-		hiring: false}
+		hiring: false,
+		data:[],
+		loading:false}
+
+//using Component Life Cycle Methods
+async componentDidMount() {
+	this.setState({loading:true});
+	let req = await fetch('https://hplussport.com/api/products/order/price/sort/asc/qty/1');
+	let resJson = await req.json();
+    this.setState({data: resJson,loading:false });
+}
+
+componentDidUpdate() {
+		console.log("The component just updated")
+	}
 
 //automatic bind to object of this class using arrow functions  
 	toggleOpenClosed = () => {
@@ -188,6 +202,16 @@ class Library extends React.Component {
 		const { bookList } = this.props
 		return (
 			<div>
+			{this.state.loading? 'loading...':this.state.data.map((product,i) =>{
+				return (
+						<div key={i}>
+							<h3>Library Product of the Week!</h3>
+							<h4>{product.name}</h4>
+							<img src={product.image} height={100}/>
+						</div>
+					)
+				}
+				)}
 				{this.state.hiring? <Hiring/> : <NotHiring/>}
 
 				<h1>The library is {this.state.open ? 'open' : 'closed'}</h1>
