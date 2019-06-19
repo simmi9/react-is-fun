@@ -119,12 +119,13 @@ const styleBook={
 	backgroundColor: 'orange'
 }
 
- const Book = ({title,author,price}) =>{
+ const Book = ({title,author,price, freeBookMark}) =>{
   	  		return(
   			<section>
   			<h1>Title: {title} </h1>  
   			<h3>Author: {author} </h3>
   			<h3>Price: {price} </h3>
+  			<h3> This Book {freeBookMark} </h3>
   			<hr></hr>
   			</section>
   		)
@@ -162,7 +163,9 @@ class Library extends React.Component {
 		}))
 	}*/
 
-	state = {open:false}
+	state = {open:false, 
+		freeBookMark: false}
+
 //automatic bind to object of this class using arrow functions  
 	toggleOpenClosed = () => {
 		//using CallBacks for setState as setState is asynchronous
@@ -184,7 +187,9 @@ class Library extends React.Component {
 							key={i}
 							title={book.title} 
 							author={book.author} 
-							pages={book.pages}/>
+							pages={book.pages}
+							freeBookMark={this.state.freeBookMark? 'is bookmarked' : 'is not bookmarked'}
+							/>
 				)}
 
 			</div>
