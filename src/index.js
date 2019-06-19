@@ -145,6 +145,15 @@ const styleBook={
 		)
 }
 */
+//conditional Rendering Components
+
+const Hiring = () => <div>
+<p> Library is Hiring. Visit Library.com/Careers for more info.</p>
+</div>
+
+const NotHiring = () => <div>
+<p> Library is not Hiring. Come back later for more info.</p>
+</div>
 
 //Adding state 
 class Library extends React.Component {
@@ -164,7 +173,8 @@ class Library extends React.Component {
 	}*/
 
 	state = {open:false, 
-		freeBookMark: false}
+		freeBookMark: false,
+		hiring: false}
 
 //automatic bind to object of this class using arrow functions  
 	toggleOpenClosed = () => {
@@ -178,10 +188,13 @@ class Library extends React.Component {
 		const { bookList } = this.props
 		return (
 			<div>
+				{this.state.hiring? <Hiring/> : <NotHiring/>}
+
 				<h1>The library is {this.state.open ? 'open' : 'closed'}</h1>
 				<button onClick={this.toggleOpenClosed}>Change</button>
+				<br></br>
 			
-				{bookList.map(
+				{this.state.open ? bookList.map(
 					(book, i) => 
 						<Book 
 							key={i}
@@ -190,7 +203,7 @@ class Library extends React.Component {
 							pages={book.pages}
 							freeBookMark={this.state.freeBookMark? 'is bookmarked' : 'is not bookmarked'}
 							/>
-				)}
+				) : 'Library Open Hours 8 am to 8:30 pm'}
 
 			</div>
 		)
