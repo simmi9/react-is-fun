@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM, {render} from 'react-dom';
 import './index.css';
 import App from './App';
+import { Library } from './Library'
 import * as serviceWorker from './serviceWorker';
 
 /*const style = { 
@@ -108,45 +109,55 @@ const BookData = [{
 }
 ];
 
+/*
 const styleLibrary={
 	display:'flex',
 	flexDirection:'column',
-	backgroundColor: 'gray'
+	backgroundColor: 'white'
 }
-const styleBook={
-	display:'flex',
-	flexDirection:'column',
-	backgroundColor: 'orange'
-}
+*/
 
- const Book = ({title,author,price}) =>{
-  	  		return(
-  			<section>
-  			<h1>Title: {title} </h1>  
-  			<h3>Author: {author} </h3>
-  			<h3>Price: {price} </h3>
-  			<hr></hr>
-  			</section>
-  		)
-  }
-
-const Library = () =>{
-		return (
-			<section>
-		{
-			BookData.map((value, index) => {
-        			return <Book style={styleBook} key={index} title={value.title} author={value.author} price={value.price}/> 
-        		})
-		}
-			</section>
-		)
-}
-
-render(<div style={styleLibrary}>
-<Library />
-</div>,
+render(
+<Library bookList={BookData}/>  
+,
 document.getElementById('root'));
 
+
+//Form Handling in React
+/*
+class ColorPickerForm extends React.Component {
+	state={ value:'' }
+
+    pickColor = (e) =>{
+    	this.setState({value: e.target.value})
+    }
+
+    submit = (e) =>{
+    	console.log(`color changed ${this.state.value}`);
+    	e.preventDefault();
+
+    }
+
+    render(){
+    	return(
+    		<form onSubmit={this.submit}>
+    			<label> Pick a Color:
+    				<input type="color" 
+    					   onChange={this.pickColor}>
+    				</input>
+    			 </label>
+    			 <button>submit</button>
+    		</form>
+
+    		)
+    }
+}
+
+render(<div>
+<ColorPickerForm/>
+</div>,
+document.getElementById('root'));
+*/
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
