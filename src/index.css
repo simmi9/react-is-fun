@@ -7,6 +7,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.library-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #F4FAFA;
+	align-items: center;
+}
+
+.product-container{
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: lightblue;
+}
+
+.book-container {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	font: darkblue;
+	border:2px solid black;
+	width: 100%;
+}
+
+.hiring-container {
+	display:flex;
+	flex-direction: row;
+	color: orange;
+}  
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
